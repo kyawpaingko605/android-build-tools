@@ -26,7 +26,7 @@ jobs:
           ${{ matrix.pkgs }} bison cmake expat flex fmt git gtest \
           libpng ninja pkgconf protobuf
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: true
     - name: Prepare
@@ -53,7 +53,7 @@ jobs:
         shell: msys2 {0}
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
     - name: Install dependencies
       uses: msys2/setup-msys2@v2
       with:

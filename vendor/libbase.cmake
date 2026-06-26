@@ -2,7 +2,6 @@
 # libbase.cmake: cmake file for libbase directory
 
 set(libbase_SRCS
-    libbase/abi_compatibility.cpp
     libbase/chrono_utils.cpp
     libbase/file.cpp
     libbase/hex.cpp

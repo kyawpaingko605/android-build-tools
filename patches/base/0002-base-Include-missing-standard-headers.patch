@@ -52,8 +52,20 @@ index cf3c0eeff..93cf715f9 100644
  #include <unordered_map>
  #include <unordered_set>
  
+diff --git a/libs/androidfw/include/androidfw/FileStream.h b/libs/androidfw/include/androidfw/FileStream.h
+index 87c42d12f825..eaccde0d390e 100644
+--- a/libs/androidfw/include/androidfw/FileStream.h
++++ b/libs/androidfw/include/androidfw/FileStream.h
+@@ -18,6 +18,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <stdint.h>
+ #include <unistd.h>
+ 
+ #include "Streams.h"
 diff --git a/tools/aapt2/AppInfo.h b/tools/aapt2/AppInfo.h
-index cabbe7ea7..15461a3fa 100644
+index cabbe7ea7446..15461a3fa896 100644
 --- a/tools/aapt2/AppInfo.h
 +++ b/tools/aapt2/AppInfo.h
 @@ -21,6 +21,8 @@

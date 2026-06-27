@@ -12,6 +12,7 @@ set(android-vendored
     aidl
     core
     zopfli
+    sysprop
 )
 
 if(ANDROID_BUILD_TOOLS_PATCH_VENDOR AND EXISTS "${ANDROID_PATCH_DIR}/")
@@ -54,12 +55,15 @@ include(libincfs.cmake)
 include(liblog.cmake)
 include(libutils.cmake)
 include(libziparchive.cmake)
+include(sysprop.cmake)
 include(zipalign.cmake)
 
 install(TARGETS
     aidl
     aapt
     aapt2
+    sysprop_cpp
+    sysprop_java
     zipalign
     DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

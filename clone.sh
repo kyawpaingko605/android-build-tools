@@ -17,6 +17,7 @@ declare -a urls=(
     https://android.googlesource.com/platform/system/libziparchive
     https://android.googlesource.com/platform/system/logging
     https://android.googlesource.com/platform/system/tools/aidl
+    https://android.googlesource.com/platform/system/tools/sysprop
 )
 
 for url in "${urls[@]}"; do

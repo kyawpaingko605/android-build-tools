@@ -28,3 +28,6 @@
 [submodule "vendor/aidl"]
 	path = vendor/aidl
 	url = https://android.googlesource.com/platform/system/tools/aidl
+[submodule "vendor/sysprop"]
+	path = vendor/sysprop
+	url = https://android.googlesource.com/platform/system/tools/sysprop

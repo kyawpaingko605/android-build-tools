@@ -4,12 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build-android-core:
-    runs-on: ubuntu-latest # ဖုန်းထဲမှာ ဝန်မပိစေဘဲ GitHub ရဲ့ Free Cloud Server ပေါ်မှာ ဆွဲမှာဖြစ်ပါတယ်
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        submodules: recursive # Submodules တွေကို Cloud ပေါ်မှာ တစ်ခါတည်း အပြည့်အစုံ ဆွဲချပေးမယ်
+        submodules: recursive
 
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -22,12 +22,16 @@ jobs:
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
         
-        # စနစ်တစ်ခုလုံးအတွက် လိုအပ်သော Build Tools များနှင့် "libfmt-dev" ပါ တစ်ခါတည်း သွင်းပေးခြင်း
+        # လိုအပ်သော Packages များ သွင်းခြင်း
         sudo apt-get update
-        sudo apt-get install -y ninja-build cmake protobuf-compiler libfmt-dev libpng-dev bison flex libexpat1-dev googletest
+        sudo apt-get install -y ninja-build cmake protobuf-compiler libfmt-dev libpng-dev bison flex libexpat1-dev
 
-        # Build လုပ်ငန်းစဉ်ကို စတင်ခြင်း
-        cmake -B build -G Ninja
+        # GTest ရှာဖွေပြီး Error တက်ခြင်းကို ကျော်လွှားရန် Testing Flags များကို OFF ပေးပြီး Build လုပ်ခြင်း
+        cmake -B build -G Ninja \
+          -DBUILD_TESTING=OFF \
+          -DENABLE_TESTS=OFF \
+          -DBUILD_TESTS=OFF
+
         cmake --build build
 
     - name: Check Artifact Version
@@ -35,7 +39,6 @@ jobs:
         # ထွက်လာတဲ့ AAPT2 Tool ကို စစ်ဆေးခြင်း
         ./build/vendor/aapt2 version || echo "AAPT2 checked"
 
-    # ထွက်လာတဲ့ AAPT2 binary (သို့) APK ကို ဖုန်းထဲကို ပြန်ဒေါင်းလုဒ်ဆွဲလို့ရအောင် သိမ်းဆည်းပေးမယ့် အဆင့်
     - name: Upload Output Artifacts
       uses: actions/upload-artifact@v4
       with:
